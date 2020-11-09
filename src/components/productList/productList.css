@@ -1,0 +1,32 @@
+.first-block {
+  width: 1030px;
+}
+
+.productList {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.productCard {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding: 10px;
+  margin: 10px;
+  width: 190px;
+  height: 380px;
+  border: 1px solid black;
+  border-radius: 20px;
+}
+
+.productCard_logo {
+  margin: 0 auto;
+
+  height: 150px;
+  width: 190px;
+
+  border: 0;
+  border-radius: 10px;
+}
+
+@media screen and (max-width: 992px) {}
