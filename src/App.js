@@ -1,7 +1,9 @@
 import React from 'react';
 import { ProductList } from './components/productList/ProductList';
 import { Form } from './components/form/Form';
+
 import './App.css';
+import 'semantic-ui-css/semantic.min.css';
 
 const ProductCards = [
   {
@@ -30,28 +32,45 @@ const ProductCards = [
 export class App extends React.Component {
   state = {
     products: ProductCards,
+    id: ProductCards.length,
   };
 
-  addProduct = (name, url, description, price) => {
+  addProduct = (name, img, description, price) => {
+    const { id }  = this.state;
     const newProduct = {
       name,
-      url,
+      img,
       description,
       price,
+      id,
     };
 
     this.setState(prevState => ({
       products: [...prevState.products, newProduct],
+      id: id + 1,
     }));
   }
 
-  deleteProduct = () => {
+  deleteProduct = (id) => {
+    const { products } = this.state;
+    const findProduct = products.findIndex(product => product.id === id);
+    products.splice(findProduct, 1)
 
+    this.setState({
+      products: products,
+    });
   }
 
-  pin = () => {
+  pin = (id) => {
+    const { products } = this.state;
+    const findProduct = products.findIndex(product => product.id === id);
+    const selctedProduct = products.splice(findProduct, 1);
 
+    this.setState({
+      products: [...selctedProduct, ...products],
+    });
   }
+
 
   render() {
     const { products } = this.state;
@@ -60,13 +79,12 @@ export class App extends React.Component {
       <div className="App">
         <ProductList
           ProductCards={products}
+          deleteProduct={this.deleteProduct}
+          pin={this.pin}
         />
         <div>
           <Form
             addProduct={this.addProduct}
-            id={products.length}
-            deleteProduct={this.deleteProduct}
-            pin={this.pin}
           />
         </div>
 

@@ -1,17 +1,13 @@
 import React from 'react';
 import './form.css';
 
-const initialState = {
-  name: '',
-  url: '',
-  description: '',
-  price: '',
-}
-
 export class Form extends React.Component {
   state = {
-    ...initialState,
-    id: this.props.id + 1,
+    name: '',
+    img: '',
+    description: '',
+    price: '',
+    error: false,
   };
 
   handleChange = (event) => {
@@ -22,25 +18,38 @@ export class Form extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    const { name, url, description, price } = this.state;
+    const { name, img, description, price } = this.state;
     const { addProduct } = this.props;
-    console.log(this.state)
-    addProduct(name, url, description, price);
 
-    this.setState = { ...initialState };
-    console.log(this.state)
+    if (!name || !img || !description || !price) {
+      this.setState({
+        error: true,
+      });
+
+      return;
+    }
+
+    addProduct(name, img, description, price);
+
+    this.setState({
+      name: '',
+      img: '',
+      description: '',
+      price: '',
+      error: false,
+    });
   }
 
   render() {
-    const { name, url, description, price } = this.state;
+    const { name, img, description, price, error } = this.state;
 
     return (
       <form
-        className="form"
+        className="ui form form__position"
         onSubmit={this.handleSubmit}
       >
         Add new product
-        <label className="form__input">
+        <label className="ui input input__position">
           <input
             name="name"
             placeholder="name"
@@ -49,16 +58,16 @@ export class Form extends React.Component {
             onChange={this.handleChange}
           />
         </label>
-        <label className="form__input">
+        <label className="ui input input__position">
           <input
-            name="url"
+            name="img"
             placeholder="URL"
             type="url"
-            value={url}
+            value={img}
             onChange={this.handleChange}
           />
         </label>
-        <label className="form__input">
+        <label className="ui input input__position">
           <input
             name="description"
             placeholder="Description"
@@ -67,8 +76,9 @@ export class Form extends React.Component {
             onChange={this.handleChange}
           />
         </label>
-        <label className="form__input">
+        <label className="ui input input__position">
           <input
+          className="ui input"
             name="price"
             placeholder="Price"
             type="text"
@@ -78,10 +88,14 @@ export class Form extends React.Component {
         </label>
         <button
           type="submit"
-          className="form__button"
+          className="ui button button__style"
         >
           Add product
         </button>
+        {error
+        ? <p className="error">Enter all data</p>
+        : '' 
+        }
       </form>
     );
   }
