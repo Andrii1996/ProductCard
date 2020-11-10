@@ -1,6 +1,4 @@
-Replace <your_account> with your Github username in the DEMO LINK
-                                                 
-[Link](https://andrii1996.github.io/ProductCard/)
+follow the [Link](https://andrii1996.github.io/ProductCard/)
 
 
 Please implement following task using React and Redux/MobX
