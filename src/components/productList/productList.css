@@ -14,7 +14,7 @@
   padding: 10px;
   margin: 10px;
   width: 190px;
-  height: 380px;
+  height: 420px;
   border: 1px solid black;
   border-radius: 20px;
 }
@@ -29,4 +29,9 @@
   border-radius: 10px;
 }
 
-@media screen and (max-width: 992px) {}
+@media screen and (max-width: 991px) {
+  .productCard {
+    width: 190px;
+    height: 380px;
+  }
+}

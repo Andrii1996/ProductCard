@@ -45,6 +45,14 @@ export class App extends React.Component {
     }));
   }
 
+  deleteProduct = () => {
+
+  }
+
+  pin = () => {
+
+  }
+
   render() {
     const { products } = this.state;
 
@@ -53,10 +61,15 @@ export class App extends React.Component {
         <ProductList
           ProductCards={products}
         />
-        <Form
-          addProduct={this.addProduct}
-          id={products.length}
-        />
+        <div>
+          <Form
+            addProduct={this.addProduct}
+            id={products.length}
+            deleteProduct={this.deleteProduct}
+            pin={this.pin}
+          />
+        </div>
+
       </div>
     );
   }
