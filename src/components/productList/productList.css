@@ -16,6 +16,12 @@
   width: 241px;
 
   border-radius: 20px;
+
+  transition: box-shadow 300ms;
+}
+
+#productCard:hover {
+  box-shadow: 1px 4px 10px silver;
 }
 
 .productCard_logo {
@@ -26,6 +32,16 @@
 
   border: 0;
   border-radius: 10px;
+}
+
+.title {
+  font-weight: 900;
+  font-size: 16px;
+}
+
+.price {
+  font-weight: 900;
+  font-size: 16px;
 }
 
 @media screen and (max-width: 991px) {

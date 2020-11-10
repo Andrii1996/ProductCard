@@ -19,6 +19,10 @@ export class ProductList extends React.Component {
   render() {
     const { ProductCards, deleteProduct, pin } = this.props;
     const { search } = this.state;
+    const filteredProduct = ProductCards.filter(product => {
+      return product.name.toLowerCase().includes(search.toLowerCase())
+      || product.description.toLowerCase().includes(search.toLowerCase())
+    });
 
     return (
       <div className="first-block">
@@ -27,10 +31,7 @@ export class ProductList extends React.Component {
           handleChange={this.handleChange}
         />
         <div className="productList">
-          {ProductCards.filter(product => {
-            return product.name.toLowerCase().includes(search.toLowerCase())
-            || product.description.toLowerCase().includes(search.toLowerCase())
-          }).map(card => (
+          {filteredProduct.map(card => (
             <div
               key={card.id}
               className="ui card"
@@ -42,9 +43,15 @@ export class ProductList extends React.Component {
                 className="productCard_logo"
               />
               <div className="content">
-                <p>{`name: ${card.name}`}</p>
+                <p>
+                  <span>{`name: `}</span>
+                  <span className="title">{card.name}</span>
+                </p>
                 <p>{`description: ${card.description}`}</p>
-                <p>{`price: ${card.price} UAH`}</p>
+                <p>
+                  <span>{`price: `}</span>
+                  <span className="price">{`${card.price} UAH`}</span>
+                </p>
               </div>
               <div>
                 <button

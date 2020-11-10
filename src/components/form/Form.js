@@ -48,47 +48,43 @@ export class Form extends React.Component {
         className="ui form form__position"
         onSubmit={this.handleSubmit}
       >
-        Add new product
-        <label className="ui input input__position">
-          <input
-            name="name"
-            placeholder="name"
-            type="text"
-            value={name}
-            onChange={this.handleChange}
-          />
-        </label>
-        <label className="ui input input__position">
-          <input
-            name="img"
-            placeholder="URL"
-            type="url"
-            value={img}
-            onChange={this.handleChange}
-          />
-        </label>
-        <label className="ui input input__position">
-          <input
-            name="description"
-            placeholder="Description"
-            type="text"
-            value={description}
-            onChange={this.handleChange}
-          />
-        </label>
-        <label className="ui input input__position">
-          <input
-          className="ui input"
-            name="price"
-            placeholder="Price"
-            type="text"
-            value={price}
-            onChange={this.handleChange}
-          />
-        </label>
+        <span className="title">Add new product</span>
+        <input
+          name="name"
+          placeholder="name"
+          type="text"
+          value={name}
+          onChange={this.handleChange}
+          id="input"
+        />
+        <input
+          name="img"
+          placeholder="URL"
+          type="url"
+          value={img}
+          onChange={this.handleChange}
+          id="input"
+        />
+        <input
+          name="description"
+          placeholder="Description"
+          type="text"
+          value={description}
+          onChange={this.handleChange}
+          id="input"
+        />
+        <input
+          name="price"
+          placeholder="Price"
+          type="text"
+          value={price}
+          onChange={this.handleChange}
+          id="input"
+        />
         <button
           type="submit"
-          className="ui button button__style"
+          className="ui button"
+          id="button__style"
         >
           Add product
         </button>
